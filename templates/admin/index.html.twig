@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<h1 class="m-3">Hello
+			{{ app.user }}</h1>
+		<h2 class="m-3">PANNEAU ADMIN</h2>
+		<h3 class="m-3">Liste des utilisateurs</h3>
+		<table class="table table-bordered table-hover">
+			<thead class="bg-success">
+				<tr>
+					<th class="text-white">Pseudo</th>
+					<th class="text-white">Email</th>
+					<th class="text-white">Role(s)</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.pseudo }}</td>
+						<td>{{ user.email }}</td>
+						<td>
+							<ul>
+								{% for role in user.roles %}
+									<li>{{ role }}</li>
+								{% endfor %}
+							</ul>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
